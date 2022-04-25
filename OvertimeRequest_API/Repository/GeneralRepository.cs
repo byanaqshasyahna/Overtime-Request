@@ -11,7 +11,6 @@ namespace OvertimeRequest_API.Repository
         where Entity : class
         where Context : MyContext
     {
-        //AHihihihihihi
         private readonly MyContext myContext;
         private readonly DbSet<Entity> entities;
 

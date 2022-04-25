@@ -9,6 +9,7 @@ namespace OvertimeRequest_API.Models
     [Table("Overtime")]
     public class Overtime
     {
+        [Key]
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public DateTime Create_date { get; set; }
