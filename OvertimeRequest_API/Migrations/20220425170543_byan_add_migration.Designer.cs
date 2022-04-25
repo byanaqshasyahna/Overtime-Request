@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OvertimeRequest_API.Context;
 
 namespace OvertimeRequest_API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20220425170543_byan_add_migration")]
+    partial class byan_add_migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,6 +89,9 @@ namespace OvertimeRequest_API.Migrations
                     b.Property<string>("Describe")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EmployeeNIP")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("Finish")
                         .HasColumnType("datetime2");
 
@@ -94,6 +99,8 @@ namespace OvertimeRequest_API.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("NIP", "OvertimeId");
+
+                    b.HasIndex("EmployeeNIP");
 
                     b.HasIndex("OvertimeId");
 
@@ -169,9 +176,7 @@ namespace OvertimeRequest_API.Migrations
                 {
                     b.HasOne("OvertimeRequest_API.Models.Employee", "Employee")
                         .WithMany("EmployeeOvertime")
-                        .HasForeignKey("NIP")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeNIP");
 
                     b.HasOne("OvertimeRequest_API.Models.Overtime", "Overtime")
                         .WithMany("EmployeeOvertime")

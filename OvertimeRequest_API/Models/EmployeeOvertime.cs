@@ -8,7 +8,7 @@ namespace OvertimeRequest_API.Models
     [Table("EmployeeOvertime")]
     public class EmployeeOvertime
     {
-        public int NIP { get; set; }
+        public string NIP { get; set; }
         public int OvertimeId { get; set; }
         public DateTime Start { get; set; }
         public DateTime Finish { get; set; }

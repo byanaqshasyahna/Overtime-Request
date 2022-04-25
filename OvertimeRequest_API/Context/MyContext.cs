@@ -40,7 +40,7 @@ namespace OvertimeRequest_API.Context
                 .HasKey(eo => new { eo.NIP, eo.OvertimeId });
             modelBuilder.Entity<EmployeeOvertime>()
                 .HasOne(o => o.Overtime)
-                .WithMany(eo => EmployeeOvertimes)
+                .WithMany(eo => eo.EmployeeOvertime)
                 .HasForeignKey(o => o.OvertimeId);
             modelBuilder.Entity<EmployeeOvertime>()
                 .HasOne(e => e.Employee)
