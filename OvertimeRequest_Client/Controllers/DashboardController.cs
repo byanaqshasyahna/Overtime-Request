@@ -20,5 +20,19 @@ namespace OvertimeRequest_Client.Controllers
         {
             return View();
         }
+
+        public IActionResult Overtime()
+        {
+            return View();
+        }
+        public IActionResult Approval()
+        {
+            return View();
+        }
+
+        public IActionResult OvertimeList()
+        {
+            return View();
+        }
     }
 }
