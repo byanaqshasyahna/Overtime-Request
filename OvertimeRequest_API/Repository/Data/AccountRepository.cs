@@ -75,7 +75,27 @@ namespace OvertimeRequest_API.Repository.Data
                 return 1;
             }
         }
+        public int Login(LoginVM loginVM)
+        {
+            var cekEmail = aContext.Employees.Where(e => e.Email == loginVM.Email).SingleOrDefault();
 
+            if (cekEmail == null)
+            {
+                //email tidak ada (Akun tidak ada)
+                return 0;
+            }
+            else
+            {
+                var getPassword = aContext.Accounts.Where(a => a.NIP == cekEmail.NIP).SingleOrDefault();
+                var validate = Hasing.ValidatePassword(loginVM.Password, getPassword.Password);
+
+                if ((cekEmail.Email == loginVM.Email) && (!validate))
+                {
+                    return 1;
+                }
+                return 2;
+            }
+        }
 
         public string LastNIK()
         {
