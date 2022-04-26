@@ -1,4 +1,4 @@
-﻿using Castle.Core.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using OvertimeRequest_API.Base;
 using OvertimeRequest_API.Context;

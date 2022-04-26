@@ -1,5 +1,6 @@
-﻿using Castle.Core.Configuration;
+﻿
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using OvertimeRequest_API.Base;
 using OvertimeRequest_API.Context;
 using OvertimeRequest_API.Models;

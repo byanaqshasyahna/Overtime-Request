@@ -1,6 +1,8 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using OvertimeRequest_API.Repository.Interface;
+using System.Linq;
+using System.Net;
 
 namespace OvertimeRequest_API.Base
 {
@@ -22,24 +24,24 @@ namespace OvertimeRequest_API.Base
         public ActionResult<Entity> Get()
         {
             var result = repository.Get();
-            /*try
+            try
             {
                 if (result.Count() > 0)
                 {
-                   
-                    return Ok(new {status = HttpStatusCode.OK, result, message = "Data Ditemukan"});
+
+                    return Ok(new { status = HttpStatusCode.OK, result, message = "Data Ditemukan" });
                 }
                 else
                 {
-                    return StatusCode(404, new { status = HttpStatusCode.NotFound,result, message = "Data Tidak ditemukan" });
+                    return StatusCode(404, new { status = HttpStatusCode.NotFound, result, message = "Data Tidak ditemukan" });
                 }
             }
             catch
             {
-                return StatusCode(500, new {status = HttpStatusCode.BadRequest, result, message = "Terjadi Kesalahan"});
-            }*/
+                return StatusCode(500, new { status = HttpStatusCode.BadRequest, result, message = "Terjadi Kesalahan" });
+            }
 
-            return StatusCode(200, result);
+            /*return StatusCode(200, result);*/
 
         }
 

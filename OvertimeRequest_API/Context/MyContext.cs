@@ -19,9 +19,9 @@ namespace OvertimeRequest_API.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>()
-                         .HasOne(a => a.Account)
-                         .WithOne(b => b.Employee)
-                         .HasForeignKey<Account>(k => k.NIP);
+                .HasOne(a => a.Account)
+                .WithOne(b => b.Employee)
+                .HasForeignKey<Account>(k => k.NIP);
 
             modelBuilder.Entity<RoleAccount>()
                 .HasKey(ra => new { ra.RoleId, ra.NIP });

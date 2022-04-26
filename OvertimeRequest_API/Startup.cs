@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using OvertimeRequest_API.Context;
+using OvertimeRequest_API.Repository.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,12 @@ namespace OvertimeRequest_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<EmployeeRepository>();
+            services.AddScoped<AccountRepository>();
+            services.AddScoped<OvertimeRepository>();
+            services.AddScoped<EmployeeOvertimeRepository>();
+            services.AddScoped<RoleAccountRepository>();
+            services.AddScoped<RoleRepository>();
 
             services.AddDbContext<MyContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("OvertimeAPI")));
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
