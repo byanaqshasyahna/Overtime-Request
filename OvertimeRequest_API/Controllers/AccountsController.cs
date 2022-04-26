@@ -4,6 +4,7 @@ using OvertimeRequest_API.Base;
 using OvertimeRequest_API.Context;
 using OvertimeRequest_API.Models;
 using OvertimeRequest_API.Repository.Data;
+using OvertimeRequest_API.VirtualModels;
 
 namespace OvertimeRequest_API.Controllers
 {
@@ -19,6 +20,31 @@ namespace OvertimeRequest_API.Controllers
             accountRepository = repository;
             myContext = context;
             this.configuration = configuration;
+        }
+
+        [HttpPost("Register")]
+        public ActionResult Register(RegisterVM registerVM)
+        {
+            var result = accountRepository.Register(registerVM);
+
+            if (result == 2)
+            {
+                return BadRequest("Email Sudah Digunakan");
+            }
+            else
+            {
+                return Ok("Registerasi berhasil");
+            }
+            /*if (result == 2)
+            {
+                return BadRequest(result);
+            }
+            else
+            {
+                return Ok(result);
+            }*/
+            /*return Ok(result);*/
+
         }
     }
 }
