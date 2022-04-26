@@ -24,7 +24,7 @@ namespace OvertimeRequest_API.Base
         public ActionResult<Entity> Get()
         {
             var result = repository.Get();
-            try
+            /*try
             {
                 if (result.Count() > 0)
                 {
@@ -39,9 +39,9 @@ namespace OvertimeRequest_API.Base
             catch
             {
                 return StatusCode(500, new { status = HttpStatusCode.BadRequest, result, message = "Terjadi Kesalahan" });
-            }
+            }*/
 
-            /*return StatusCode(200, result);*/
+            return StatusCode(200, result);
 
         }
 

@@ -97,7 +97,7 @@ namespace OvertimeRequest_API.Repository.Data
             MailMessage message = new MailMessage(from, to);
 
             
-            message.Subject = "Sending Email Using Asp.Net & C#";
+            message.Subject = "Your Office Account";
             message.Body = "Your account password : " + password;
             message.BodyEncoding = Encoding.UTF8;
             message.IsBodyHtml = true;
@@ -107,6 +107,17 @@ namespace OvertimeRequest_API.Repository.Data
             client.EnableSsl = true;
             client.UseDefaultCredentials = false;
             client.Credentials = basicCredential1;
+            try
+            {
+                client.Send(message);
+                
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+                
+            }
         }
     }
 }
