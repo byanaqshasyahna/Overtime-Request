@@ -82,7 +82,7 @@ namespace OvertimeRequest_API.Controllers
                     configuration["Jwt:Issuer"],
                     configuration["Jwr:Audience"],
                     claims,
-                    expires: DateTime.UtcNow.AddMinutes(10),
+                    expires: DateTime.UtcNow.AddMinutes(10), // JWT EXPIRED TIME
                     signingCredentials: signIn
                     );
                 var idToken = new JwtSecurityTokenHandler().WriteToken(token);
