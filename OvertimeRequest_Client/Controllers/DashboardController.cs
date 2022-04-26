@@ -15,5 +15,10 @@ namespace OvertimeRequest_Client.Controllers
         {
             return View();
         }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
     }
 }
