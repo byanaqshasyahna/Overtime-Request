@@ -2,6 +2,7 @@
 using OvertimeRequest_API.Models;
 using OvertimeRequest_API.VirtualModels;
 using System;
+using System.Collections;
 using System.Linq;
 
 namespace OvertimeRequest_API.Repository.Data
@@ -18,30 +19,20 @@ namespace OvertimeRequest_API.Repository.Data
         {
             var date = DateTime.Now;
             var tabEmpOvt = eContext.EmployeeOvertimes.Where(eo => eo.NIP == overtimeRequestVM.NIP).ToList().LastOrDefault() ;
-            /*if(tabEmpOvt != null)
+            if (tabEmpOvt != null)
             {
                 var tabOvt = eContext.Overtimes.Where(o => o.Id == tabEmpOvt.OvertimeId).SingleOrDefault();
-                *//*if (tabOvt == null)
-                {
-                    var ovt = new Overtime
+                
+                    if(tabOvt.OvertimeDate.Date == overtimeRequestVM.DateRequest.Date)
                     {
-                        CreateDate = date,
-                        OvertimeDate = overtimeRequestVM.DateRequest
-                    };
-                    eContext.Overtimes.Add(ovt);
-                    eContext.SaveChanges();
-                }*//*
-                if(tabOvt.OvertimeDate.Date == overtimeRequestVM.DateRequest.Date)
-                {
-                    var ovtEmp = new EmployeeOvertime
-                    {
-                        NIP = overtimeRequestVM.NIP,
-                        OvertimeId = tabOvt.Id,
-                        Start = overtimeRequestVM.StartTime,
-                        Finish = overtimeRequestVM.EndTime,
-                        Describe = overtimeRequestVM.Description
-                    };
-                    eContext.EmployeeOvertimes.Add(ovtEmp);
+                        var act = new Activity
+                        {
+                            StartTime = overtimeRequestVM.StartTime,
+                            FinishTime = overtimeRequestVM.EndTime,
+                            Description = overtimeRequestVM.Description,
+                            OvertimeId = tabOvt.Id
+                        };
+                        eContext.Activities.Add(act);
                 }
                 else
                 {
@@ -52,53 +43,79 @@ namespace OvertimeRequest_API.Repository.Data
                     };
                     eContext.Overtimes.Add(ovt);
                     eContext.SaveChanges();
-                    var dataIdOvertime = eContext.Overtimes.Where(o => o.OvertimeDate == overtimeRequestVM.DateRequest).ToList().LastOrDefault() ;
+
+                    var dataIdOvertime = eContext.Overtimes.Where(o => o.OvertimeDate == overtimeRequestVM.DateRequest).ToList().LastOrDefault();
                     var ovtEmp = new EmployeeOvertime
                     {
                         NIP = overtimeRequestVM.NIP,
                         OvertimeId = dataIdOvertime.Id,
-                        Start = overtimeRequestVM.StartTime,
-                        Finish = overtimeRequestVM.EndTime,
-                        Describe = overtimeRequestVM.Description
+
                     };
                     eContext.EmployeeOvertimes.Add(ovtEmp);
+                    eContext.SaveChanges();
+
+                    var act = new Activity
+                    {
+                        StartTime = overtimeRequestVM.StartTime,
+                        FinishTime = overtimeRequestVM.EndTime,
+                        Description = overtimeRequestVM.Description,
+                        OvertimeId = dataIdOvertime.Id
+                    };
+                    eContext.Activities.Add(act);
+                    
                 }
+                   
+                    
                 
                 var result = eContext.SaveChanges();
-
                 return result;
-            }*/
-            /*else
-            {*/
+            }
+            else
+            {
                 var ovt = new Overtime
-                {
-                    CreateDate = date,
-                    OvertimeDate = overtimeRequestVM.DateRequest
-                };
-                eContext.Overtimes.Add(ovt);
-                eContext.SaveChanges();
-                var dataIdOvertime = eContext.Overtimes.Where(o => o.OvertimeDate == overtimeRequestVM.DateRequest).ToList().LastOrDefault();
-                var ovtEmp = new EmployeeOvertime
+            {
+                CreateDate = date,
+                OvertimeDate = overtimeRequestVM.DateRequest
+            };
+            eContext.Overtimes.Add(ovt);
+            eContext.SaveChanges();
+
+            var dataIdOvertime = eContext.Overtimes.Where(o => o.OvertimeDate == overtimeRequestVM.DateRequest).ToList().LastOrDefault();
+            var ovtEmp = new EmployeeOvertime
             {
                 NIP = overtimeRequestVM.NIP,
                 OvertimeId = dataIdOvertime.Id,
-                Start = overtimeRequestVM.StartTime,
-                Finish = overtimeRequestVM.EndTime,
-                Describe = overtimeRequestVM.Description
+                
             };
             eContext.EmployeeOvertimes.Add(ovtEmp);
-            var result = eContext.SaveChanges();
+            eContext.SaveChanges();
+
+            var act = new Activity
+            {
+                StartTime = overtimeRequestVM.StartTime,
+                FinishTime = overtimeRequestVM.EndTime,
+                Description = overtimeRequestVM.Description,
+                OvertimeId = dataIdOvertime.Id
+            };
+                eContext.Activities.Add(act);
+                var result = eContext.SaveChanges();
+
 
                 return result;
-            //}
+            }
             
         }
 
         /*public int ApproveManager(ApprovedVM approvedVM)
         {
-            var ovtEmp = eContext.EmployeeOvertimes.Where(eo => )
+            var ovtEmp = eContext.EmployeeOvertimes.Where(eo => eo.NIP == approvedVM.NIP).ToList();
             return 0;
         }*/
+
+        public IEnumerable overtimeData()
+        {
+            return eContext.Overtimes;
+        }
         public int EmployeeRequest(OvertimeRequestVM overtimeRequestVM)
         {
             

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OvertimeRequest_API.Context;
 
 namespace OvertimeRequest_API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20220427154847_make_entity_Activity")]
+    partial class make_entity_Activity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +57,7 @@ namespace OvertimeRequest_API.Migrations
                     b.Property<DateTime>("FinishTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OvertimeId")
+                    b.Property<int?>("OvertimeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartTime")
@@ -186,9 +188,7 @@ namespace OvertimeRequest_API.Migrations
                 {
                     b.HasOne("OvertimeRequest_API.Models.Overtime", "Overtime")
                         .WithMany("Activities")
-                        .HasForeignKey("OvertimeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OvertimeId");
 
                     b.Navigation("Overtime");
                 });

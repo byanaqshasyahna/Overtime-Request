@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OvertimeRequest_API.Context;
 
 namespace OvertimeRequest_API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20220427152601_from_byan")]
+    partial class from_byan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,32 +42,6 @@ namespace OvertimeRequest_API.Migrations
                     b.HasKey("NIP");
 
                     b.ToTable("Account");
-                });
-
-            modelBuilder.Entity("OvertimeRequest_API.Models.Activity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("FinishTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("OvertimeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OvertimeId");
-
-                    b.ToTable("Activity");
                 });
 
             modelBuilder.Entity("OvertimeRequest_API.Models.Employee", b =>
@@ -182,17 +158,6 @@ namespace OvertimeRequest_API.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("OvertimeRequest_API.Models.Activity", b =>
-                {
-                    b.HasOne("OvertimeRequest_API.Models.Overtime", "Overtime")
-                        .WithMany("Activities")
-                        .HasForeignKey("OvertimeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Overtime");
-                });
-
             modelBuilder.Entity("OvertimeRequest_API.Models.EmployeeOvertime", b =>
                 {
                     b.HasOne("OvertimeRequest_API.Models.Employee", "Employee")
@@ -245,8 +210,6 @@ namespace OvertimeRequest_API.Migrations
 
             modelBuilder.Entity("OvertimeRequest_API.Models.Overtime", b =>
                 {
-                    b.Navigation("Activities");
-
                     b.Navigation("EmployeeOvertime");
                 });
 

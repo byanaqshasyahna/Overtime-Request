@@ -19,6 +19,9 @@ namespace OvertimeRequest_API.Models
         [JsonIgnore]
         public virtual ICollection<EmployeeOvertime> EmployeeOvertime { get; set; }
 
+        [JsonIgnore]
+        public virtual ICollection<Activity> Activities { get; set; }
+
 
     }
     public enum Approval
