@@ -92,16 +92,13 @@ namespace OvertimeRequest_API.Repository.Data
                 return result;
             //}
             
-
-            
-
-            
-            
-            
-
-            
         }
 
+        /*public int ApproveManager(ApprovedVM approvedVM)
+        {
+            var ovtEmp = eContext.EmployeeOvertimes.Where(eo => )
+            return 0;
+        }*/
         public int EmployeeRequest(OvertimeRequestVM overtimeRequestVM)
         {
             
