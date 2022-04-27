@@ -11,10 +11,10 @@ namespace OvertimeRequest_API.Models
     {
         [Key]
         public int Id { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime Create_date { get; set; }
-        public Approval Approve_Finance {get; set;}
-        public Approval Approve_Manager { get; set; }
+        public DateTime OvertimeDate { get; set; }
+        public DateTime CreateDate { get; set; }
+        public Approval FinanceApprove {get; set;}
+        public Approval ManagerApprove { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<EmployeeOvertime> EmployeeOvertime { get; set; }

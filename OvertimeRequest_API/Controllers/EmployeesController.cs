@@ -5,6 +5,7 @@ using OvertimeRequest_API.Base;
 using OvertimeRequest_API.Context;
 using OvertimeRequest_API.Models;
 using OvertimeRequest_API.Repository.Data;
+using OvertimeRequest_API.VirtualModels;
 
 namespace OvertimeRequest_API.Controllers
 {
@@ -20,6 +21,14 @@ namespace OvertimeRequest_API.Controllers
             employeeRepository = repository;
             myContext = context;
             this.configuration = configuration;
+        }
+
+        [HttpPost("OvertimeRequest")]
+        public ActionResult OvertimeRequest(OvertimeRequestVM overtimeReqeustVM)
+        {
+            var result = employeeRepository.OvertimeRequest(overtimeReqeustVM);
+
+            return Ok(result);
         }
     }
 }
