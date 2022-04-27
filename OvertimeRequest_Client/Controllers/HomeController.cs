@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OvertimeRequest_API.VirtualModels;
 using OvertimeRequest_Client.Models;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace OvertimeRequest_Client.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        
     }
 }
 
