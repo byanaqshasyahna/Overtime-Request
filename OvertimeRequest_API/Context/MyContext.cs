@@ -16,6 +16,7 @@ namespace OvertimeRequest_API.Context
         public DbSet<RoleAccount> RoleAccounts { get; set; }
         public DbSet <Overtime> Overtimes { get; set; }
         public DbSet <EmployeeOvertime > EmployeeOvertimes { get; set; }
+        public DbSet<Activity> Activities { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>()
@@ -47,6 +48,9 @@ namespace OvertimeRequest_API.Context
                 .WithMany(eo => eo.EmployeeOvertime)
                 .HasForeignKey(e => e.NIP);
 
+            modelBuilder.Entity<Overtime>()
+                .HasMany(a => a.Activities)
+                .WithOne(o => o.Overtime);
         }
     }      
 }
