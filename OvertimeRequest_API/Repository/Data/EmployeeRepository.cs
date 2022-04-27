@@ -2,6 +2,7 @@
 using OvertimeRequest_API.Models;
 using OvertimeRequest_API.VirtualModels;
 using System;
+using System.Collections;
 using System.Linq;
 
 namespace OvertimeRequest_API.Repository.Data
@@ -94,10 +95,15 @@ namespace OvertimeRequest_API.Repository.Data
             
         }
 
-        public int ApproveManager(ApprovedVM approvedVM)
+        /*public int ApproveManager(ApprovedVM approvedVM)
         {
-            /*var ovtEmp = eContext.EmployeeOvertimes.Where(eo => )*/
+            var ovtEmp = eContext.EmployeeOvertimes.Where(eo => eo.NIP == approvedVM.NIP).ToList();
             return 0;
+        }*/
+
+        public IEnumerable overtimeData()
+        {
+            return eContext.Overtimes;
         }
         public int EmployeeRequest(OvertimeRequestVM overtimeRequestVM)
         {

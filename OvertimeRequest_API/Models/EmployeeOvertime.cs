@@ -10,9 +10,7 @@ namespace OvertimeRequest_API.Models
     {
         public string NIP { get; set; }
         public int OvertimeId { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime Finish { get; set; }
-        public string Describe { get; set; }
+       
 
         [JsonIgnore]
         public virtual Overtime Overtime { get; set; }
