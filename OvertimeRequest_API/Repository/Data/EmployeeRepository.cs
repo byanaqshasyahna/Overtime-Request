@@ -94,11 +94,11 @@ namespace OvertimeRequest_API.Repository.Data
             
         }
 
-        /*public int ApproveManager(ApprovedVM approvedVM)
+        public int ApproveManager(ApprovedVM approvedVM)
         {
-            var ovtEmp = eContext.EmployeeOvertimes.Where(eo => )
+            /*var ovtEmp = eContext.EmployeeOvertimes.Where(eo => )*/
             return 0;
-        }*/
+        }
         public int EmployeeRequest(OvertimeRequestVM overtimeRequestVM)
         {
             
