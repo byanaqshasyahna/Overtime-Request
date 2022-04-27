@@ -6,123 +6,42 @@
 <form id="Overtime" onsubmit="Insert()" class="needs-validation" novalidate>
 
     <div class="form-row">
-        @*Input First Name*@
-        <div class="form-group col-md-6">
-            <label for="FirstName">First Name</label>
-            <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
-            <div class="invalid-feedback">
-                Insert First Name
-            </div>
-        </div>
-        @*Input Last Name*@
-        <div class="form-group col-md-6">
-            <label for="LastName">Last Name</label>
-            <input type="text" class="form-control" id="LastName" placeholder="Last Name" required>
-            <div class="invalid-feedback">
-                Insert Last Name
-            </div>
-        </div>
-    </div>
-
-    <div class="form-row">
-        @*Input Phone*@
-        <div class="form-group col-md-6">
-            <label for="Phone">Phone</label>
-            <input type="text" class="form-control" id="Phone" placeholder="Phone" required>
-            <div class="invalid-feedback">
-                Insert Phone
-            </div>
-        </div>
 
         @*Input Birthdate*@
-        <div class="form-group col-md-3">
-            <label for="Birthdate">Birthdate</label></br>
+        <div class="form-group col-md-12">
+            <label for="Birthdate">Overtime Date</label></br>
             <input type="date" id="Birthdate" />
             <div class="invalid-feedback">
-                Insert Birthdate
+                Insert Overtime Date
             </div>
         </div>
+    </div>
 
-        @*Input Salary*@
-        <div class="form-group col-md-3">
-            <label for="Salary">Salary</label>
-            <input type="number" class="form-control" id="Salary" placeholder="1000000" required>
+     <div class="form-row">
+        @*Input First Name*@
+        <div class="form-group col-md-4">
+            <label for="FirstName">Start Time</label>
+            <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
             <div class="invalid-feedback">
-                Insert Salary
+                Insert Start Time
             </div>
         </div>
-    </div>
-    <div class="form-row">
-        @*Input Email*@
-        <div class="form-group col-md-6">
-            <label for="Email">Email</label>
-            <input type="email" class="form-control" id="Email" placeholder="email@email.com" required>
+        @*Input First Name*@
+        <div class="form-group col-md-4">
+            <label for="FirstName">Finish Time</label>
+            <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
             <div class="invalid-feedback">
-                Insert Email
+                Insert Start Time
             </div>
         </div>
-        @*Input Gender*@
-        <div class="form-group col-md-6">
-            <label for="Gender">Gender</label>
-            <div class="dropdown">
-                <select id="Gender" class="custom-select mr-sm-2" required>
-                    <option selected>Choose Gender</option>
-                    <option value="0">Male</option>
-                    <option value="1">Female</option>
-                </select>
-                <div class="invalid-feedback">
-                    Insert Gender
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-row">
-        @*Input Password*@
-        <div class="form-group col-md-6">
-            <label for="Password">Password</label>
-            <input type="password" class="form-control" id="Password" placeholder="******" required>
+        @*Input First Name*@
+        <div class="form-group col-md-4">
+            <label for="FirstName"> Description</label>
+            <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
             <div class="invalid-feedback">
-                Insert Password
+                Insert Start Time
             </div>
         </div>
-        @*Input Degree*@
-        <div class="form-group col-md-6">
-            <label for="Degree">Degree</label>
-            <select id="Degree" class="form-control" required>
-                <option selected>Choose Degree</option>
-                <option value="Elementary School">Elementary School</option>
-                <option value="Junior High School">Junior High School</option>
-                <option value="Senior High School">Senior High School</option>
-                <option value="Bachelor Degree">Bachelor Degree</option>
-                <option value="Master Degree">Master Degree</option>
-                <option value="Doctoral Degree">Doctoral Degree</option>
-            </select>
-            <div class="invalid-feedback">
-                Select Degree
-            </div>
         </div>
-    </div>
-    <div class="form-row">
-        @*Input GPA*@
-        <div class="form-group col-md-6">
-            <label for="GPA">GPA</label>
-            <input type="text" class="form-control" id="GPA" placeholder="0 - 4.00" required>
-            <div class="invalid-feedback">
-                Insert GPA
-            </div>
-        </div>
-        @*Input University*@
-        <div class="form-group col-md-6">
-            <label for="University">University</label>
-            <select id="UniversitiesID" class="form-control">
-                <option selected>Choose University</option>
-                <option value="1">Universitas Islam Indonesia</option>
-                <option value="2">Universitas Gadjah Mada</option>
-                <option value="3">Universitas Negeri Yogyakarta</option>
-                <option value="4">Universitas Ahmad Dahlan</option>
-                <option value="5">Universitas Kristen Duta Wacana</option>
-            </select>
-        </div>
-    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

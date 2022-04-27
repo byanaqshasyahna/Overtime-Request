@@ -25,7 +25,12 @@ namespace OvertimeRequest_Client.Controllers
         {
             return View();
         }
-        public IActionResult Approval()
+        public IActionResult ApprovalFinance()
+        {
+            return View();
+        }
+
+        public IActionResult ApprovalManager()
         {
             return View();
         }
