@@ -32,7 +32,7 @@ namespace OvertimeRequest_Client
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(10);//set 10 menit   
+                options.IdleTimeout = TimeSpan.FromHours(1);//set 10 menit   
             });
 
 

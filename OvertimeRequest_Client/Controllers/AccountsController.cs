@@ -42,6 +42,13 @@ namespace OvertimeRequest_Client.Controllers
             return Json(result);
 
         }
+
+        [HttpPost]
+        public JsonResult Register(RegisterVM registerVM)
+        {
+            var result = accountRepository.Register(registerVM);
+            return Json(result);
+        }
     }
 }
 

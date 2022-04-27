@@ -6,6 +6,7 @@ using OvertimeRequest_API.VirtualModels;
 using OvertimeRequest_Client.Base;
 using OvertimeRequest_Client.VirtualModels;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 
@@ -41,6 +42,15 @@ namespace OvertimeRequest_Client.Repositories.Data
             }
 
             return result;
+        }
+
+        public HttpStatusCode Register(RegisterVM registerVM)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(registerVM), Encoding.UTF8, "application/json");
+
+            var response = httpClient.PostAsync(request + "Register/", content).Result;
+
+            return response.StatusCode;
         }
     }
 }
