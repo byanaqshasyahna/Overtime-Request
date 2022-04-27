@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "DashboardLayout";
+}
+
+<form id="register" onsubmit="Insert()" class="needs-validation" novalidate>
+
+    <div class="form-row">
+        @*Input First Name*@
+        <div class="form-group col-md-6">
+            <label for="FirstName">First Name</label>
+            <input type="text" class="form-control" id="FirstName" placeholder="First Name" required>
+            <div class="invalid-feedback">
+                Insert First Name
+            </div>
+        </div>
+        @*Input Last Name*@
+        <div class="form-group col-md-6">
+            <label for="LastName">Last Name</label>
+            <input type="text" class="form-control" id="LastName" placeholder="Last Name" required>
+            <div class="invalid-feedback">
+                Insert Last Name
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        @*Input Email*@
+        <div class="form-group col-md-6">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" placeholder="email@email.com" required>
+            <div class="invalid-feedback">
+                Insert Email
+            </div>
+        </div>
+
+        @*Input Phone*@
+        <div class="form-group col-md-6">
+            <label for="Phone">Phone</label>
+            <input type="text" class="form-control" id="Phone" placeholder="Phone" required>
+            <div class="invalid-feedback">
+                Insert Phone
+            </div>
+        </div>
+
+    </div>
+    <div class="form-row">
+        @*Input Birthdate*@
+        <div class="form-group col-md-2">
+            <label for="Birthdate">Birthdate</label></br>
+            <input type="date" id="Birthdate" />
+            <div class="invalid-feedback">
+                Insert Birthdate
+            </div>
+        </div>
+
+        @*Input Salary*@
+        <div class="form-group col-md-5">
+            <label for="Salary">Salary</label>
+            <input type="number" class="form-control" id="Salary" placeholder="1000000" required>
+            <div class="invalid-feedback">
+                Insert Salary
+            </div>
+        </div>
+
+        @*Input Salary*@
+        <div class="form-group col-md-5">
+            <label for="Salary">Paid Overtime</label>
+            <input type="number" class="form-control" id="Salary" placeholder="1000000" required>
+            <div class="invalid-feedback">
+                Insert Overtime Paid
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        @*Input Password*@
+        <div class="form-group col-md-6">
+            <label for="Password">Password</label>
+            <input type="password" class="form-control" id="Password" placeholder="******" required>
+            <div class="invalid-feedback">
+                Insert Password
+            </div>
+        </div>
+        @*Input Gender*@
+        <div class="form-group col-md-6">
+            <label for="Gender">Gender</label>
+            <div class="dropdown">
+                <select id="Gender" class="custom-select mr-sm-2" required>
+                    <option selected>Choose Gender</option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+                <div class="invalid-feedback">
+                    Insert Gender
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Employee</button>
+</form>
