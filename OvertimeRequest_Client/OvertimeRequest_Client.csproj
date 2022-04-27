@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\Data\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\OvertimeRequest_API\OvertimeRequest_API.csproj" />
   </ItemGroup>
 
