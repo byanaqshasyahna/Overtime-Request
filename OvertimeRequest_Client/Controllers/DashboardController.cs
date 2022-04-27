@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OvertimeRequest_Client.Models;
 using System;
@@ -11,11 +12,13 @@ namespace OvertimeRequest_Client.Controllers
 {
     public class DashboardController : Controller
     {
+        [Authorize(Roles = "Admin, Employee, Manager, Finance")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Register()
         {
             return View();
@@ -25,11 +28,14 @@ namespace OvertimeRequest_Client.Controllers
         {
             return View();
         }
+
+        [Authorize(Roles = "Finance")]
         public IActionResult ApprovalFinance()
         {
             return View();
         }
 
+        [Authorize(Roles = "Manager")]
         public IActionResult ApprovalManager()
         {
             return View();
