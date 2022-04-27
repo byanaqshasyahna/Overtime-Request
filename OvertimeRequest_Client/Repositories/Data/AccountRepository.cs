@@ -11,14 +11,14 @@ using System.Text;
 
 namespace OvertimeRequest_Client.Repositories.Data
 {
-    public class EmployeeRepository : GeneralRepository<Employee, string>
+    public class AccountRepository : GeneralRepository<Account, string>
     {
         private readonly Address address;
         private readonly HttpClient httpClient;
         private readonly string request;
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public EmployeeRepository(Address address, string request = "Employees/") : base(address, request)
+        public AccountRepository(Address address, string request = "Accounts/") : base(address, request)
         {
             this.address = address;
             this.request = request;
@@ -29,6 +29,18 @@ namespace OvertimeRequest_Client.Repositories.Data
             };
         }
 
-       
+        public LoginResponseVM Login(LoginVM loginVM)
+        {
+            LoginResponseVM result;
+            StringContent content = new StringContent(JsonConvert.SerializeObject(loginVM), Encoding.UTF8, "application/json");
+
+            using (var response = httpClient.PostAsync(request + "Login", content).Result)
+            {
+                string apiResponse = response.Content.ReadAsStringAsync().Result;
+                result = JsonConvert.DeserializeObject<LoginResponseVM>(apiResponse);
+            }
+
+            return result;
+        }
     }
 }
