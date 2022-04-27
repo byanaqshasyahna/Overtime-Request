@@ -37,6 +37,3 @@
             }]
     });
 });
-
-function Approve() { }
-function Decline() { }

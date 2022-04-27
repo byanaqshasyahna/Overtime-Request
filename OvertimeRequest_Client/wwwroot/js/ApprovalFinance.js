@@ -20,7 +20,7 @@
             {
                 "data": 'fullname',
                 "autoWidth": true,
-
+                
             },
             {
                 "data": "role",
