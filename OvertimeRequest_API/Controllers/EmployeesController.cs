@@ -6,6 +6,7 @@ using OvertimeRequest_API.Context;
 using OvertimeRequest_API.Models;
 using OvertimeRequest_API.Repository.Data;
 using OvertimeRequest_API.VirtualModels;
+using System.Net;
 
 namespace OvertimeRequest_API.Controllers
 {
@@ -29,10 +30,10 @@ namespace OvertimeRequest_API.Controllers
             var result = employeeRepository.OvertimeRequest(overtimeReqeustVM);
             if(result > 0)
             {
-                return Ok("Sukses");
+                return StatusCode( 200, new {status = HttpStatusCode.OK, result, message = "sukses"} );
             }
-                return BadRequest("Gagal daftar employee");
-            
+                return StatusCode(400, new { status = HttpStatusCode.BadRequest, message = "Gagal" });
+
         }
 
         [HttpGet("EmployeeByEmail/{Email}")]

@@ -34,8 +34,9 @@ namespace OvertimeRequest_Client.Repositories.Data
         public HttpStatusCode RequestOvertime(OvertimeRequestVM overtimeRequestVM)
         {
             StringContent content = new StringContent(JsonConvert.SerializeObject(overtimeRequestVM), Encoding.UTF8, "application/json");
+            
 
-            var response = httpClient.PostAsync(request + "OvertimeRequest/", content).Result;
+            var response = httpClient.PostAsync(request + "OvertimeRequest", content).Result;
 
             return response.StatusCode;
         }

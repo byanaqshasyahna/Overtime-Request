@@ -22,17 +22,10 @@ function Register() {
 
 
     $.ajax({
-        //from local api
-        /*url: 'https://localhost:56213/api/Accounts/Register',*/
-        //from local client
+        
         url: '../Accounts/Register',
         type: 'POST',
-        /*headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        dataType: 'json',*/
-        /*data: JSON.stringify(obj),*/
+        
         data: obj,
     }).done((result) => {
         //buat alert pemberitahuan jika success
