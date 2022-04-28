@@ -4,9 +4,9 @@
         "orderMulti": false,
         "processing": true,
         "ajax": {
-            "url": " ",
+            "url": "../Employees/DataManager",
             "datatype": "json",
-            "dataSrc": " "
+            "dataSrc": "",
         },
         "columns": [
             {
@@ -23,7 +23,7 @@
 
             },
             {
-                "data": "role",
+                "data": "roleName[].roleName",
                 "audtoWidth": true,
 
             },
@@ -31,10 +31,11 @@
                 "autowidth": true,
                 "orderable": false,
                 "render": function (data, type, row) {
-                    return `<button onclick="" class="btn btn-danger"></button>
-                            <button onclick="" class="btn btn-success"></button>`
-                }.
-            }]
+                    return `<button onclick="" class="btn btn-success fas fa-fw fa-thumbs-up"></button>
+                            <button onclick="" class="btn btn-danger fas fa-fw fa-thumbs-down"></button>`
+                },
+            },
+        ],
     });
 });
 

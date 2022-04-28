@@ -6,6 +6,8 @@ using OvertimeRequest_API.VirtualModels;
 using OvertimeRequest_Client.Base;
 using OvertimeRequest_Client.VirtualModels;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -54,6 +56,18 @@ namespace OvertimeRequest_Client.Repositories.Data
             }
             return entities;
 
+        }
+
+        public async Task<IEnumerable<RequestDataVM>> GetMasterData()
+        {
+            List<RequestDataVM> entities = new List<RequestDataVM>();
+
+            using (var response = await httpClient.GetAsync(request + "DataManager"))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<RequestDataVM>>(apiResponse);
+            }
+            return entities;
         }
     }
 }

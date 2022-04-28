@@ -40,6 +40,12 @@ namespace OvertimeRequest_Client.Controllers
             return Json(result);
         }
 
+        [HttpGet]
+        public async Task<JsonResult> DataManager()
+        {
+            var result = await employeeRepository.GetMasterData();
+            return Json(result);
+        }
 
     }
 }

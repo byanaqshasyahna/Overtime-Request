@@ -43,5 +43,12 @@ namespace OvertimeRequest_API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("DataManager")]
+        public ActionResult DataManager()
+        {
+            var result = employeeRepository.RequestData();
+            return Ok(result);
+        }
+
     }
 }
