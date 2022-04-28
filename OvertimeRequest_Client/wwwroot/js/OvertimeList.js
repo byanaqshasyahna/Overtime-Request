@@ -31,8 +31,7 @@
                 "autowidth": true,
                 "orderable": false,
                 "render": function (data, type, row) {
-                    return `<button onclick="" class="btn btn-danger"></button>
-                            <button onclick="" class="btn btn-success"></button>`
+                    return `<button type="button" class="btn btn-primary" data-toggle="modal" onclick="fungsi" data-target="#StatusWindow">Status</button>`
                 }.
             }]
     });
