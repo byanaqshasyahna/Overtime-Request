@@ -118,7 +118,7 @@ namespace OvertimeRequest_API.Repository.Data
 
             EmployeeVM employeeVM = new EmployeeVM
             {
-                NIP = "123456",
+                NIP = emp.NIP,
                 Email = emp.Email,
                 FirstName = emp.FirstName,
                 LastName = emp.LastName,
