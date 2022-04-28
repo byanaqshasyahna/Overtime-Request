@@ -35,6 +35,7 @@ namespace OvertimeRequest_Client.Controllers
             if (result.TokenJWT != null)
             {
                 HttpContext.Session.SetString("JWToken", result.TokenJWT);
+                HttpContext.Session.SetString("Email", result.Email);
                 //HttpContext.Session.SetString("Name", jwtHandler.GetName(token));
                 //HttpContext.Session.SetString("ProfilePicture", "assets/img/theme/user.png");
             }

@@ -27,8 +27,20 @@ namespace OvertimeRequest_API.Controllers
         public ActionResult OvertimeRequest(OvertimeRequestVM overtimeReqeustVM)
         {
             var result = employeeRepository.OvertimeRequest(overtimeReqeustVM);
+            if(result > 0)
+            {
+                return Ok("Sukses");
+            }
+                return BadRequest("Gagal daftar employee");
+            
+        }
 
+        [HttpGet("EmployeeByEmail/{Email}")]
+        public ActionResult getByEmail(string Email)
+        {
+            var result = employeeRepository.getEmployeeByEmail(Email);
             return Ok(result);
         }
+
     }
 }

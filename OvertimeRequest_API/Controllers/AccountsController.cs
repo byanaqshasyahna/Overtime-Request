@@ -88,15 +88,15 @@ namespace OvertimeRequest_API.Controllers
                 var idToken = new JwtSecurityTokenHandler().WriteToken(token);
                 claims.Add(new Claim("TokenSecurity", idToken.ToString()));
 
-                return Ok(new { status = HttpStatusCode.OK, TokenJWT = idToken, message = "Login Success" });
+                return Ok(new { status = HttpStatusCode.OK, TokenJWT = idToken, message = "Login Success" , Email = loginvm.Email});
 
             }
             else if (result == 0)
             {
-                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Akun Tidak Ada" });
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Akun Tidak Ada", Email = loginvm.Email });
             }
             else
-                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Password Salah" });
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Password Salah", Email = loginvm.Email });
 
         }
         public List<string> getRole(string NIP)

@@ -1,16 +1,18 @@
-﻿@{
-    ViewData["Title"] = "Overtime";
-    Layout = "DashboardLayout";
+﻿@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "RequestOvertime";
+    ViewData["Section"] = "RequestOvertime";
+    Layout = "RequestOvertimeLayout";
 }
 
-<form id="Overtime" onsubmit="Insert()" class="needs-validation" novalidate>
+<form id="Overtime" onsubmit="RequestOvertime()" class="needs-validation" novalidate>
 
     <div class="form-row">
 
         @*Input Birthdate*@
         <div class="form-group col-md-12">
             <label for="Birthdate">Overtime Date</label></br>
-            <input type="date" id="Date" />
+            <input type="date" id="RequestDate" />
             <div class="invalid-feedback">
                 Insert Overtime Date
             </div>
@@ -21,7 +23,7 @@
         @*Input First Name*@
         <div class="form-group col-md-4">
             <label for="FirstName">Start Time</label>
-            <input type="time" class="form-control" id="Start" placeholder="First Name" required>
+            <input type="time" class="form-control" id="StartTime" placeholder="First Name" required>
             <div class="invalid-feedback">
                 Insert Start Time
             </div>
@@ -29,7 +31,7 @@
         @*Input First Name*@
         <div class="form-group col-md-4">
             <label for="FirstName">Finish Time</label>
-            <input type="Time" class="form-control" id="Finish" placeholder="First Name" required>
+            <input type="Time" class="form-control" id="FinishTime" placeholder="First Name" required>
             <div class="invalid-feedback">
                 Insert Start Time
             </div>
@@ -45,3 +47,14 @@
         </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+
+<input type="hidden" id="nip" value="" />
+
+<input type="hidden" id="email" value="@Context.Session.GetString("Email")" />
+
+@*<script>
+    const token = '@Context.Session.GetString("JWToken")';
+   
+</script>*@

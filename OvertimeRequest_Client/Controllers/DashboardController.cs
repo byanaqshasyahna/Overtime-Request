@@ -24,7 +24,7 @@ namespace OvertimeRequest_Client.Controllers
             return View();
         }
 
-        public IActionResult Overtime()
+        public IActionResult RequestOvertime()
         {
             return View();
         }

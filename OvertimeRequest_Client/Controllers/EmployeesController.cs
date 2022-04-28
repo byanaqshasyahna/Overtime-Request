@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OvertimeRequest_Client.Controllers
 {
-    public class EmployeesController : BaseController<Employee, EmployeeRepository, string >
+    public class EmployeesController : BaseController<Employee, EmployeeRepository, string>
     {
         private readonly EmployeeRepository employeeRepository;
         public EmployeesController(EmployeeRepository repository) : base(repository)
@@ -26,7 +26,21 @@ namespace OvertimeRequest_Client.Controllers
             return View();
         }
 
-        
+        [HttpGet]
+        public async Task<JsonResult> GetEmployeeByEmail(EmployeeByEmailVM employeeByEmailVM)
+        {
+            var result =  await employeeRepository.GetEmployeeByEmail(employeeByEmailVM.Email);
+            return Json(result);
+        }
+
+        [HttpPost]
+        public JsonResult RequestOvertime(OvertimeRequestVM overtimeRequestVM)
+        {
+            var result = employeeRepository.RequestOvertime(overtimeRequestVM);
+            return Json(result);
+        }
+
+
     }
 }
 

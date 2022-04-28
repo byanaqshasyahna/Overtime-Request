@@ -112,14 +112,22 @@ namespace OvertimeRequest_API.Repository.Data
             return 0;
         }*/
 
-        public IEnumerable overtimeData()
+        public EmployeeVM getEmployeeByEmail(string Email)
         {
-            return eContext.Overtimes;
-        }
-        public int EmployeeRequest(OvertimeRequestVM overtimeRequestVM)
-        {
-            
-            return 0;
+            var emp = eContext.Employees.Where(e => e.Email == Email).SingleOrDefault();
+
+            EmployeeVM employeeVM = new EmployeeVM
+            {
+                NIP = "123456",
+                Email = emp.Email,
+                FirstName = emp.FirstName,
+                LastName = emp.LastName,
+                Gender = emp.Gender,
+                Salary = emp.Salary,
+                BirthDate = emp.BirthDate,
+                PhoneNumber = emp.PhoneNumber
+            };
+            return employeeVM;
         }
     }
 }
