@@ -106,11 +106,29 @@ namespace OvertimeRequest_API.Repository.Data
             
         }
 
-        /*public int ApproveManager(ApprovedVM approvedVM)
+        public IEnumerable RequestData()
         {
-            var ovtEmp = eContext.EmployeeOvertimes.Where(eo => eo.NIP == approvedVM.NIP).ToList();
-            return 0;
-        }*/
+            var result = (from e in eContext.Employees
+                          join eo in eContext.EmployeeOvertimes on e.NIP equals eo.NIP
+                          join o in eContext.Overtimes on eo.OvertimeId equals o.Id
+                          join a in eContext.Activities on o.Id equals a.OvertimeId
+                          join ac in eContext.Accounts on e.NIP equals ac.NIP
+                          where o.ManagerApprove == (Approval)0
+                          orderby e.NIP
+                          select new
+                          {
+                              NIP = e.NIP,
+                              FullName = e.FirstName + " " + e.LastName,
+                              Email = e.Email,
+                              Phone = e.PhoneNumber,
+                              Salary = e.Salary,
+                              BirthDate = e.BirthDate,
+                              PaidOvertime = e.PaidOvertime,
+                              Gender = ((Gender)e.Gender).ToString(),
+                              RoleName = eContext.Roles.Where(r => r.RoleAccounts.Any(ra => ra.NIP == e.NIP)).ToList()  
+                          }).ToList();
+            return result;
+        }
 
         public EmployeeVM getEmployeeByEmail(string Email)
         {
