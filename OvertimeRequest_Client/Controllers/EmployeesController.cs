@@ -47,6 +47,12 @@ namespace OvertimeRequest_Client.Controllers
             return Json(result);
         }
 
+        [HttpGet]
+        public async Task<JsonResult> GetActivityList(string overtimeID)
+        {
+            var result = await employeeRepository.GetActivityList(overtimeID);
+            return Json(result);
+        }
     }
 }
 

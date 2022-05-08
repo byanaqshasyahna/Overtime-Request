@@ -69,5 +69,21 @@ namespace OvertimeRequest_Client.Repositories.Data
             }
             return entities;
         }
+
+
+        public async Task<IEnumerable<Activity>> GetActivityList(string overtimeID)
+        {
+            /// isi codingan kalian disini
+            /// 
+            List<Activity> entities = new List<Activity>();
+
+            using (var response = await httpClient.GetAsync(request + "ActivityByOvertimeID/" + overtimeID))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<Activity>>(apiResponse);
+            }
+            return entities;
+
+        }
     }
 }

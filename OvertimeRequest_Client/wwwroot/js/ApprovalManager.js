@@ -25,6 +25,28 @@
             {
                 "data": "roleName[].roleName",
                 "audtoWidth": true,
+                /*"render": function (data, type, row, meta) {
+                    return row["roleName[]"];
+                }*/
+
+            },
+            {
+                "data": null,
+                "autoWidth": true,
+                "render": function (data, type, row, meta) {
+                    return row["dateRequest"];
+                }
+
+            },
+            {
+                "data": null,
+                "autoWidth": true,
+                "render": function (data, type, row, meta) {
+                    return ` <div class="row">
+                                <div class="col-sm-5">${row["dateOvertime"]}</div>
+                                <div class="col-sm-2"><button onclick ="DetailActivity('${row["overtimeId"]}')" class="btn btn-secondary" data-toggle="modal" data-target="#modalDetailOvertime" >Detail</button></div>
+                            </div> `;
+                }
 
             },
             {
@@ -38,6 +60,34 @@
         ],
     });
 });
+
+function DetailActivity(overtimeId) {
+    console.log(overtimeId);
+
+    $.ajax({
+        url: "../Employees/GetActivityList?overtimeId=" + 7,
+        success: function (result) {
+            console.log(result);
+            var text = "cobain";
+
+            $.each(result, function (key, val) {
+                text += `<tr>
+                      <th scope="row">${val.id}</th>
+                      <td>${moment(val.startTime).format('LT')}</td>
+                      <td>${moment(val.finishTime).format('LT') }</td>
+                      <td>${val.description}</td>
+                    </tr>`
+            });
+
+
+            $("#activityList").html(text);
+
+
+        }
+
+    })
+
+}
 
 function Approve() { }
 function Decline() { }

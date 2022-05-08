@@ -50,5 +50,13 @@ namespace OvertimeRequest_API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("ActivityByOvertimeID/{overtimeId}")]
+        public ActionResult ActivityList(int overtimeId)
+        {
+            var result = employeeRepository.getActivityList(overtimeId);
+
+                return Ok(result);
+        }
+
     }
 }

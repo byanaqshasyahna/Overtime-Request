@@ -3,6 +3,7 @@ using OvertimeRequest_API.Models;
 using OvertimeRequest_API.VirtualModels;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OvertimeRequest_API.Repository.Data
@@ -111,7 +112,6 @@ namespace OvertimeRequest_API.Repository.Data
             var result = (from e in eContext.Employees
                           join eo in eContext.EmployeeOvertimes on e.NIP equals eo.NIP
                           join o in eContext.Overtimes on eo.OvertimeId equals o.Id
-                          join a in eContext.Activities on o.Id equals a.OvertimeId
                           join ac in eContext.Accounts on e.NIP equals ac.NIP
                           where o.ManagerApprove == (Approval)0
                           orderby e.NIP
@@ -125,7 +125,10 @@ namespace OvertimeRequest_API.Repository.Data
                               BirthDate = e.BirthDate,
                               PaidOvertime = e.PaidOvertime,
                               Gender = ((Gender)e.Gender).ToString(),
-                              RoleName = eContext.Roles.Where(r => r.RoleAccounts.Any(ra => ra.NIP == e.NIP)).ToList()  
+                              RoleName = eContext.Roles.Where(r => r.RoleAccounts.Any(ra => ra.NIP == e.NIP)).ToList(),
+                              DateRequest = o.CreateDate,
+                              DateOvertime = o.OvertimeDate,
+                              OvertimeId = o.Id
                           }).ToList();
             return result;
         }
@@ -147,5 +150,13 @@ namespace OvertimeRequest_API.Repository.Data
             };
             return employeeVM;
         }
+    
+        public List<Activity> getActivityList(int id)
+        {
+            var activity = eContext.Activities.Where(e => e.OvertimeId == id).ToList();
+
+            return activity;
+        }
+    
     }
 }

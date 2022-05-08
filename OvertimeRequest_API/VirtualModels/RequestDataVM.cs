@@ -17,6 +17,9 @@ namespace OvertimeRequest_API.VirtualModels
         public string GPA { get; set; }
         public string UniversityName { get; set; }
         public List<Role> RoleName { get; set; }
+        public DateTime DateRequest { get; set; }
+        public DateTime DateOvertime { get; set; }
+        public int OvertimeId { get; set; }
 
     }
 }
