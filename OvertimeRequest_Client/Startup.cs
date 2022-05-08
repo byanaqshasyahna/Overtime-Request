@@ -39,6 +39,7 @@ namespace OvertimeRequest_Client
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddScoped<EmployeeRepository>();
             services.AddScoped<AccountRepository>();
+            services.AddScoped<OvertimeRepository>();
             services.AddScoped<Address>();
 
             //send header to api
