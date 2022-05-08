@@ -34,7 +34,7 @@
                 "data": null,
                 "autoWidth": true,
                 "render": function (data, type, row, meta) {
-                    return row["dateRequest"];
+                    return moment(row["dateRequest"]).format('LL');
                 }
 
             },
@@ -43,7 +43,7 @@
                 "autoWidth": true,
                 "render": function (data, type, row, meta) {
                     return ` <div class="row">
-                                <div class="col-sm-5">${row["dateOvertime"]}</div>
+                                <div class="col-sm-5">${moment(row["dateOvertime"]).format('LL')}</div>
                                 <div class="col-sm-2"><button onclick ="DetailActivity('${row["overtimeId"]}')" class="btn btn-secondary" data-toggle="modal" data-target="#modalDetailOvertime" >Detail</button></div>
                             </div> `;
                 }
