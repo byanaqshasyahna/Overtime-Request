@@ -48,6 +48,13 @@ namespace OvertimeRequest_Client.Controllers
         }
 
         [HttpGet]
+        public async Task<JsonResult> DataFinance()
+        {
+            var result = await employeeRepository.GetMasterDataFinance();
+            return Json(result);
+        }
+
+        [HttpGet]
         public async Task<JsonResult> GetActivityList(string overtimeID)
         {
             var result = await employeeRepository.GetActivityList(overtimeID);

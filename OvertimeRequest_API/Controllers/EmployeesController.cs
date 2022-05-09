@@ -50,6 +50,13 @@ namespace OvertimeRequest_API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("DataFinance")]
+        public ActionResult DataFinance()
+        {
+            var result = employeeRepository.RequestDataFinance();
+            return Ok(result);
+        }
+
         [HttpGet("ActivityByOvertimeID/{overtimeId}")]
         public ActionResult ActivityList(int overtimeId)
         {
