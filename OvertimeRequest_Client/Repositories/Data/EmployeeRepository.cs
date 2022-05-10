@@ -70,6 +70,17 @@ namespace OvertimeRequest_Client.Repositories.Data
             return entities;
         }
 
+        public async Task<IEnumerable<RequestDataVM>> GetMasterDataFinance()
+        {
+            List<RequestDataVM> entities = new List<RequestDataVM>();
+            using (var response = await httpClient.GetAsync(request + "DataFinance"))
+            {
+                string apiResponsse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<RequestDataVM>>(apiResponsse);
+            }
+            return entities;
+        }
+
 
         public async Task<IEnumerable<Activity>> GetActivityList(string overtimeID)
         {

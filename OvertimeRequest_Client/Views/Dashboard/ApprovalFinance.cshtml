@@ -3,16 +3,56 @@
     Layout = "DashboardLayout";
 }
 
-<table id="TableData" class="table table-light table-striped table-bordered border-light" style="margin-top: 50px;">
+<table id="ApprovalFinance" class="table table-light table-striped table-bordered border-light" style="margin-top: 50px;">
     <thead>
         <tr>
             <th scope="col">No</th>
             <th scope="col">Name</th>
             <th scope="col">Jabatan</th>
+            <th scope="col">Date Request</th>
+            <th scope="col">Date Overtime</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
     </tbody>
 </table>
+
+
+@*Modal Detail Activity*@
+<div class="modal fade bd-example-modal-lg" id="modalDetailOvertime" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-lg modal-side modal-bottom-right modal-notify modal-info modal-dialog-centered" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading">Overtime Details</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+          <table id="DetailActivity" class="table table-light table-striped table-bordered border-light" style="">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Description</th>
+           
+        </tr>
+    </thead>
+    <tbody id="activityList">
+    </tbody>
+</table>
+        
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
 

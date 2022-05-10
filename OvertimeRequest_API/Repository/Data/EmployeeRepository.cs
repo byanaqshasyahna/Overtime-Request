@@ -133,6 +133,33 @@ namespace OvertimeRequest_API.Repository.Data
             return result;
         }
 
+
+        public IEnumerable RequestDataFinance()
+        {
+            var result = (from e in eContext.Employees
+                          join eo in eContext.EmployeeOvertimes on e.NIP equals eo.NIP
+                          join o in eContext.Overtimes on eo.OvertimeId equals o.Id
+                          join ac in eContext.Accounts on e.NIP equals ac.NIP
+                          where o.ManagerApprove == (Approval)1 && o.FinanceApprove == (Approval)0
+                          orderby e.NIP
+                          select new
+                          {
+                              NIP = e.NIP,
+                              FullName = e.FirstName + " " + e.LastName,
+                              Email = e.Email,
+                              Phone = e.PhoneNumber,
+                              Salary = e.Salary,
+                              BirthDate = e.BirthDate,
+                              PaidOvertime = e.PaidOvertime,
+                              Gender = ((Gender)e.Gender).ToString(),
+                              RoleName = eContext.Roles.Where(r => r.RoleAccounts.Any(ra => ra.NIP == e.NIP)).ToList(),
+                              DateRequest = o.CreateDate,
+                              DateOvertime = o.OvertimeDate,
+                              OvertimeId = o.Id
+                          }).ToList();
+            return result;
+        }
+
         public EmployeeVM getEmployeeByEmail(string Email)
         {
             var emp = eContext.Employees.Where(e => e.Email == Email).SingleOrDefault();

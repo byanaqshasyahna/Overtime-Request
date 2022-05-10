@@ -27,6 +27,7 @@ namespace OvertimeRequest_API.Models
     public enum Approval
     {
         Declined,
-        Approved
+        Approved,
+        DeclinedManagerAndFinance
     }
 }
