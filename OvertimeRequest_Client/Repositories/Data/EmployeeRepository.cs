@@ -33,7 +33,7 @@ namespace OvertimeRequest_Client.Repositories.Data
             };
         }
 
-        public HttpStatusCode RequestOvertime(OvertimeRequestVM overtimeRequestVM)
+        public HttpStatusCode RequestOvertime(List<OvertimeRequestVM> overtimeRequestVM)
         {
             StringContent content = new StringContent(JsonConvert.SerializeObject(overtimeRequestVM), Encoding.UTF8, "application/json");
             

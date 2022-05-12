@@ -34,7 +34,7 @@ namespace OvertimeRequest_API.Controllers
                 result = employeeRepository.OvertimeRequest(overtimeReqeustVM[i]);
             }
             
-            if(result > overtimeReqeustVM.Count)
+            if(result > 0)
             {
                 return StatusCode( 200, new {status = HttpStatusCode.OK, result, message = "sukses"} );
             }

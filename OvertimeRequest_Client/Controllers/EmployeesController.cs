@@ -34,8 +34,10 @@ namespace OvertimeRequest_Client.Controllers
         }
 
         [HttpPost]
-        public JsonResult RequestOvertime( OvertimeRequestVM overtimeRequestVM)
+        public JsonResult RequestOvertime( List<OvertimeRequestVM> overtimeRequestVM)
         {
+            Console.WriteLine(overtimeRequestVM);
+
             var result = employeeRepository.RequestOvertime(overtimeRequestVM);
             return Json(result);
         }

@@ -11,7 +11,7 @@ function addMoreRequest() {
 
         <div class="form-group col-md-4">
             <label for="FirstName ">Start Time</label>
-            <input type="time" class="form-control" id="StartTime`+counter+`" placeholder="First Name" required>
+            <input type="time" class="form-control" id="StartTime`+counter+`" placeholder="Start Time" required>
             <div class="invalid-feedback">
                 Insert Start Time
             </div>
@@ -19,7 +19,7 @@ function addMoreRequest() {
 
         <div class="form-group col-md-4">
             <label for="FirstName">Finish Time</label>
-            <input type="Time" class="form-control" id="FinishTime`+counter+`" placeholder="First Name" required>
+            <input type="Time" class="form-control" id="FinishTime`+counter+`" placeholder="End Time" required>
             <div class="invalid-feedback">
                 Insert Start Time
             </div>
@@ -27,7 +27,7 @@ function addMoreRequest() {
 
         <div class="form-group col-md-4">
             <label for="FirstName"> Description</label>
-            <input type="text" class="form-control" id="Description`+counter+`" placeholder="First Name" required>
+            <input type="text" class="form-control" id="Description`+counter+`" placeholder="Description" required>
             <div class="invalid-feedback">
                 Insert Start Time
             </div>
@@ -63,9 +63,11 @@ function RequestOvertime() {
     event.preventDefault();
     var Email = $('#email').val();
     var NIP = $('#nip').val();
-    let daftar = [];
+    
+    let daftar = []
 
     for (var i = 1; i <= counter; i++) {
+
 
         console.log("hitungan loop : " + i)
 
@@ -74,8 +76,8 @@ function RequestOvertime() {
         var timeStart = $('#RequestDate').val() + "T" + $('#StartTime' + (i) + '').val() + ":00";
         var timeEnd = $('#RequestDate').val() + "T" + $('#FinishTime' + (i) + '').val() + ":00";
         console.log(timeStart);
-        var obj = new Object(); //sesuaikan sendiri nama objectnya dan beserta isinya
-                //ini ngambil value dari tiap inputan di form nya
+
+        var obj = new Object();
         obj.DateRequest = $('#RequestDate').val();
         obj.StartTime = timeStart;
         obj.EndTime = timeEnd;
@@ -83,20 +85,35 @@ function RequestOvertime() {
         obj.NIP = NIP
         console.log(NIP)
 
-
+        
         console.log(obj)
         daftar.push(obj)
         
 
-                /*$.ajax({
-                    url: '../Employees/RequestOvertime',
+                
+
+        
+           
+
+    }
+
+    console.log(daftar)
+
+
+    $.ajax({
+                 url:'https://localhost:44308/api/Employees/OvertimeRequest',
                     type: 'POST',
-                    data: obj,
+                    data: JSON.stringify(daftar),
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    }
+                    
                 }).done((result) => {
                     //buat alert pemberitahuan jika success
                     console.log(result);
 
-                    if (result == 200) {
+                    if (result.status == 200) {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
@@ -104,7 +121,7 @@ function RequestOvertime() {
                             showConfirmButton: false,
                             timer: 1500
                         }).then((result) => {
-                            //setTimeout(location.reload(), 5000);
+                            setTimeout(location.reload(), 5000);
                         })
                     } else {
                         Swal.fire({
@@ -119,15 +136,5 @@ function RequestOvertime() {
                 }).fail((error) => {
                     //alert pemberitahuan jika gagal
                     console.log("gabisa bro");
-                })*/
-
-        
-           
-
-    }
-
-    console.log(daftar)
-
-
-
+                })
 }
