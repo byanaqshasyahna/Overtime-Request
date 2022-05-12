@@ -30,13 +30,13 @@ namespace OvertimeRequest_Client.Controllers
             return View();
         }
 
-        /*[Authorize(Roles = "Finance")]*/
+        [Authorize(Roles = "Finance")]
         public IActionResult ApprovalFinance()
         {
             return View();
         }
 
-        /*[Authorize(Roles = "Manager")]*/
+        [Authorize(Roles = "Manager")]
         public IActionResult ApprovalManager()
         {
             return View();

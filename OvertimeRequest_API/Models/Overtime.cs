@@ -15,6 +15,7 @@ namespace OvertimeRequest_API.Models
         public DateTime CreateDate { get; set; }
         public Approval FinanceApprove {get; set;}
         public Approval ManagerApprove { get; set; }
+        public int Paid { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<EmployeeOvertime> EmployeeOvertime { get; set; }

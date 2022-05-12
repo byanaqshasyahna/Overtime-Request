@@ -70,16 +70,24 @@ function DetailActivityFinance(overtimeId) {
         success: function (result) {
             console.log(result);
             var text = "cobain";
-
+            var hasil = 0;
             $.each(result, function (key, val) {
                 text += `<tr>
                       <th scope="row">${val.id}</th>
                       <td>${moment(val.startTime).format('LT')}</td>
                       <td>${moment(val.finishTime).format('LT')}</td>
                       <td>${val.description}</td>
-                    </tr>`
+                    </tr>`;
+
+                var start = new Date(val.startTime)
+                var end = new Date(val.finishTime);
+
+                hasil += diff_hours(start, end)
+                
+
             });
 
+            console.log("hasilnya adalah :" + hasil);
 
             $("#activityList").html(text);
 
@@ -90,33 +98,85 @@ function DetailActivityFinance(overtimeId) {
 
 }
 
+function diff_hours(dt2, dt1) {
+
+    var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= (60 * 60);
+    return Math.abs(Math.round(diff));
+
+}
+
+
 function ApproveFinance(id, overtimeDate, createDate) {
     console.log(id + " " + overtimeDate + " " + createDate);
-    var obj = new Object();
-    obj.Id = id;
-    obj.OvertimeDate = overtimeDate;
-    obj.CreateDate = createDate;
-    obj.FinanceApprove = 1;
-    obj.ManagerApprove = 1;
 
-    console.log(obj);
 
     $.ajax({
+        url: "../Employees/GetActivityList?overtimeId=" + id,
+        success: function (result) {
+            console.log(result);
 
-        url: '../overtimes/put',
-        type: 'PUT',
+            var waktuKerja = 0;
+            $.each(result, function (key, val) {
+                
 
-        data: obj,
-    }).done((result) => {
-        //buat alert pemberitahuan jika success
-        console.log(result);
+                var start = new Date(val.startTime)
+                var end = new Date(val.finishTime);
 
-        console.log("Sukses");
-        //setTimeout(location.reload(), 10000);
-    }).fail((error) => {
-        //alert pemberitahuan jika gagal
-        console.log("gabisa bro");
+                waktuKerja += diff_hours(start, end)
+                
+
+            });
+            var gaji = parseInt($("#salary").val());
+            var upahLembur = 1 / 173 * gaji
+
+            if (waktuKerja > 1) {
+                var waktuLebih = waktuKerja - 1
+                var totalgajiLembur = parseInt(waktuLebih * 2 * upahLembur + (1 * 1.5 * upahLembur));
+            } else {
+                var totalgajiLembur = parseInt(1 * 1.5 * upahLembur)
+            }
+
+            console.log("gaji lembur" + totalgajiLembur)
+            console.log("gajinya : " + gaji)
+            console.log("hasilnya adalah :" + waktuKerja)
+
+            var obj = new Object();
+            obj.Id = id;
+            obj.OvertimeDate = overtimeDate;
+            obj.CreateDate = createDate;
+            obj.FinanceApprove = 1;
+            obj.ManagerApprove = 1;
+            obj.Paid = totalgajiLembur;
+
+            console.log(obj);
+
+             $.ajax({
+
+                url: '../overtimes/put',
+                type: 'PUT',
+
+                data: obj,
+            }).done((result) => {
+                //buat alert pemberitahuan jika success
+                console.log(result);
+
+                console.log("Sukses");
+                //setTimeout(location.reload(), 10000);
+            }).fail((error) => {
+                //alert pemberitahuan jika gagal
+                console.log("gabisa bro");
+            })
+
+        }
+
     })
+
+
+
+    
+
+   
 }
 function DeclineFinance(id, overtimeDate, createDate) {
     console.log(id + " " + overtimeDate + " " + createDate);

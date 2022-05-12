@@ -176,14 +176,14 @@ namespace OvertimeRequest_API.Repository.Data
                               Phone = e.PhoneNumber,
                               Salary = e.Salary,
                               BirthDate = e.BirthDate,
-                              PaidOvertime = e.PaidOvertime,
                               Gender = ((Gender)e.Gender).ToString(),
                               RoleName = eContext.Roles.Where(r => r.RoleAccounts.Any(ra => ra.NIP == e.NIP)).ToList(),
                               DateRequest = o.CreateDate,
                               DateOvertime = o.OvertimeDate,
                               OvertimeId = o.Id,
                               ManagerApprove = o.ManagerApprove,
-                              FinanceApprove = o.FinanceApprove
+                              FinanceApprove = o.FinanceApprove,
+                              PaidOvertime = o.Paid
                           }).ToList();
             return result;
         }

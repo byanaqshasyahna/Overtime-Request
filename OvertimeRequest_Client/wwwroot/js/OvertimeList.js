@@ -68,6 +68,14 @@ $(document).ready(function () {
                     
                 },
             },
+            {
+                "data": null,
+                "autoWidth": true,
+                "render": function (data, type, row, meta) {
+                    return "Rp. " + row["paidOvertime"];
+                }
+
+            }
         ],
     });
 });

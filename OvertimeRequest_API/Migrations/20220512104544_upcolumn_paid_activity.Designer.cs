@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OvertimeRequest_API.Context;
 
 namespace OvertimeRequest_API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20220512104544_upcolumn_paid_activity")]
+    partial class upcolumn_paid_activity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,6 +58,9 @@ namespace OvertimeRequest_API.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("OvertimeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Paid")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartTime")
@@ -135,9 +140,6 @@ namespace OvertimeRequest_API.Migrations
 
                     b.Property<DateTime>("OvertimeDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Paid")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

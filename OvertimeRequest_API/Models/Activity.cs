@@ -14,6 +14,7 @@ namespace OvertimeRequest_API.Models
         public DateTime StartTime { get; set; }
         public DateTime FinishTime { get; set; }
         public string Description { get; set; }
+        
 
         [Required]
         public int OvertimeId { get; set; }

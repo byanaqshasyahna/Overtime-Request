@@ -7,5 +7,6 @@
         public string Message { get; set; }
         public string Email { get; set; }
         public string NIP { get; set; }
+        public string Salary { get; set; }
     }
 }

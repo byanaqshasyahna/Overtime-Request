@@ -1,5 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@{
     ViewData["Title"] = "Approval Finance";
+    ViewData["Section"] = "Approval Finance";
     Layout = "DashboardLayout";
 }
 
@@ -56,3 +58,4 @@
   </div>
 </div>
 
+<input type="hidden" id="salary" value="@Context.Session.GetString("Salary")" />

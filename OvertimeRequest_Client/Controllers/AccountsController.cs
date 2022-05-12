@@ -37,6 +37,7 @@ namespace OvertimeRequest_Client.Controllers
                 HttpContext.Session.SetString("JWToken", result.TokenJWT);
                 HttpContext.Session.SetString("Email", result.Email);
                 HttpContext.Session.SetString("NIP", result.NIP);
+                HttpContext.Session.SetString("Salary", result.Salary);
                
                 //HttpContext.Session.SetString("Name", jwtHandler.GetName(token));
                 //HttpContext.Session.SetString("ProfilePicture", "assets/img/theme/user.png");
