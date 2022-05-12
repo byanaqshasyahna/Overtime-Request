@@ -1,4 +1,4 @@
-﻿@model OvertimeRequest_API.VirtualModels.OvertimeRequestVM
+﻿@model OvertimeRequest_Client.VirtualModels.OvertimeVM
 @{
     Layout = null;
 }
@@ -13,16 +13,16 @@
     <div id="removeAddMoreDiv" class="col-xs-12 col-sm-12 form-group">
         <div class="row">
             <div class="col-md-3">
-                <input asp-for="StartTime" type="time" class="form-control" />
+                <input id = "StartTime" asp-for="StartTime" type="time" class="form-control" />
             </div>
             <div class="col-md-3">
-                <input asp-for="EndTime" type="time"  class="form-control" />
+                <input id = "FinishTime" asp-for="EndTime" type="time"  class="form-control" />
             </div>
             <div class="col-md-3">
-                <input asp-for="Description" placeholder="Description" class="form-control" />
+                <input id="Description" asp-for="Description" placeholder="Description" class="form-control" />
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-danger btn-sm removeDiv">
+                <button  type="button" class="btn btn-danger btn-sm removeDiv">
                     Remove
                 </button>
             </div>
@@ -30,6 +30,7 @@
         </div>
     </div>
 }
+
 <script>
     $(".removeDiv").click(function () {
         $(this).parents("#removeAddMoreDiv").remove();

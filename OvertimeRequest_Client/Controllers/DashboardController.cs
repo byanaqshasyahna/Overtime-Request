@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using OvertimeRequest_Client.VirtualModels;
 
 
 namespace OvertimeRequest_Client.Controllers
@@ -51,12 +52,12 @@ namespace OvertimeRequest_Client.Controllers
         {
             //this  action page is support cal the partial page.
             //We will call this action by view page.This Action is return partial page
-            OvertimeRequest_API.VirtualModels.OvertimeRequestVM model = new OvertimeRequest_API.VirtualModels.OvertimeRequestVM();
+            OvertimeVM model = new OvertimeVM();
             return PartialView("AddMorePartialView", model);
             //^this is actual partical page we have 
             //create on this page in Home Controller as given below image
         }
-        public ActionResult PostAdd(OvertimeRequest_API.VirtualModels.OvertimeRequestVM overtimeRequestVM)
+        public ActionResult PostAdd(OvertimeVM overtimeVM)
         {
             //Here,Post addmore value from view page and get multiple values from view page
             return View();
