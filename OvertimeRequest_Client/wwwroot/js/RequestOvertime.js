@@ -30,7 +30,7 @@ function RequestOvertime() {
             var timeEnd = $('#RequestDate').val() + "T" + $('#FinishTime').val() + ":00";
             console.log(timeStart);
 
-             
+
             var obj = new Object(); //sesuaikan sendiri nama objectnya dan beserta isinya
             //ini ngambil value dari tiap inputan di form nya
             obj.NIP = result.nip;
@@ -84,5 +84,5 @@ function RequestOvertime() {
     })
 
 
-    
+
 }
