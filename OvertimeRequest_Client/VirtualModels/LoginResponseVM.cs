@@ -8,5 +8,6 @@
         public string Email { get; set; }
         public string NIP { get; set; }
         public string Salary { get; set; }
+        public string fullName { get; set; }
     }
 }

@@ -1,4 +1,12 @@
-﻿var nipPribadi = $('#nip').val();
+﻿var span = document.getElementById('nameLogin');
+var name = $("#nickName").val();
+
+while (span.firstChild) {
+    span.removeChild(span.firstChild);
+}
+span.appendChild(document.createTextNode(name));
+
+var nipPribadi = $('#nip').val();
 $(document).ready(function () {
     $("#OvertimeList").DataTable({
         "filter": true,

@@ -25,6 +25,7 @@ namespace OvertimeRequest_Client.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Employee, Manager, Finance")]
         public IActionResult RequestOvertime()
         {
             return View();
@@ -42,6 +43,7 @@ namespace OvertimeRequest_Client.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Employee, Manager, Finance")]
         public IActionResult OvertimeList()
         {
             return View();

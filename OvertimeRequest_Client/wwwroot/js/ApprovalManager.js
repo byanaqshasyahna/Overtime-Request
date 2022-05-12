@@ -1,4 +1,12 @@
-﻿$(document).ready(function () {
+﻿var span = document.getElementById('nameLogin');
+var name = $("#nickName").val();
+
+while (span.firstChild) {
+    span.removeChild(span.firstChild);
+}
+span.appendChild(document.createTextNode(name));
+
+$(document).ready(function () {
     $("#ApprovalManager").DataTable({
         "filter": true,
         "orderMulti": false,
@@ -72,7 +80,7 @@ function DetailActivity(overtimeId) {
 
             $.each(result, function (key, val) {
                 text += `<tr>
-                      <th scope="row">${val.id}</th>
+                      <th scope="row">${key + 1}</th>
                       <td>${moment(val.startTime).format('LT')}</td>
                       <td>${moment(val.finishTime).format('LT') }</td>
                       <td>${val.description}</td>
@@ -111,7 +119,7 @@ function ApproveManager(id, overtimeDate, createDate) {
         console.log(result);
 
         console.log("Sukses");
-        //setTimeout(location.reload(), 10000);
+        setTimeout(location.reload(), 10000);
     }).fail((error) => {
         //alert pemberitahuan jika gagal
         console.log("gabisa bro");
@@ -140,7 +148,7 @@ function DeclineManager(id, overtimeDate, createDate) {
         console.log(result);
 
         console.log("Sukses");
-        //setTimeout(location.reload(), 10000);
+        setTimeout(location.reload(), 10000);
     }).fail((error) => {
         //alert pemberitahuan jika gagal
         console.log("gabisa bro");

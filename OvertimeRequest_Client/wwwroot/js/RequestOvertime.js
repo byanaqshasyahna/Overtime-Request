@@ -4,6 +4,15 @@
 
 // Write your JavaScript code.
 
+var span = document.getElementById('nameLogin');
+var name = $("#nickName").val();
+
+while (span.firstChild) {
+    span.removeChild(span.firstChild);
+}
+span.appendChild(document.createTextNode(name));
+
+
 var counter = 1;
 function addMoreRequest() {
     counter += 1;

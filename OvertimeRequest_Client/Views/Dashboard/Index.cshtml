@@ -1,5 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@{
     ViewData["Title"] = "Dashboard";
+    ViewData["Section"] = "Dashbord";
     Layout = "DashboardLayout";
 }
 <!-- Begin Page Content -->
@@ -355,3 +357,5 @@
 <!-- End of Content Wrapper -->
         </div>
 <!-- End of Page Wrapper -->
+
+<input type="hidden" id="nickName" value="@Context.Session.GetString("nickName")" />

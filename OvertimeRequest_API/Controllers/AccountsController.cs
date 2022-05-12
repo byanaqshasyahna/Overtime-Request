@@ -67,12 +67,14 @@ namespace OvertimeRequest_API.Controllers
                 var NIP = dataEmp.NIP;
                 var salary = dataEmp.Salary.ToString();
                 var cekRole = getRole(NIP);
+                var fullname = dataEmp.FirstName + " " + dataEmp.LastName;
 
 
                 var claims = new List<Claim>();
                 claims.Add(new Claim("Email", loginvm.Email));
                 claims.Add(new Claim("NIP", NIP));
                 claims.Add(new Claim("Salary", salary));
+                claims.Add(new Claim("Fullname", fullname));
 
                 foreach (var item in cekRole)
                 {
@@ -91,7 +93,7 @@ namespace OvertimeRequest_API.Controllers
                 var idToken = new JwtSecurityTokenHandler().WriteToken(token);
                 claims.Add(new Claim("TokenSecurity", idToken.ToString()));
 
-                return Ok(new { status = HttpStatusCode.OK, TokenJWT = idToken, message = "Login Success" , Email = loginvm.Email, NIP = NIP, Salary = salary});
+                return Ok(new { status = HttpStatusCode.OK, TokenJWT = idToken, message = "Login Success" , Email = loginvm.Email, NIP = NIP, Salary = salary, fullName = fullname});
 
             }
             else if (result == 0)

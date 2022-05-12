@@ -1,5 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@{
     ViewData["Title"] = "Approval Manager";
+    ViewData["Section"] = "Approval Manager";
     Layout = "DashboardLayout";
 }
 
@@ -53,3 +55,5 @@
     <!--/.Content-->
   </div>
 </div>
+
+<input type="hidden" id="nickName" value="@Context.Session.GetString("nickName")" />
