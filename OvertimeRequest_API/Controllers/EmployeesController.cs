@@ -63,6 +63,13 @@ namespace OvertimeRequest_API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("DataPribadi/{nip}")]
+        public ActionResult DataPribadi(string nip)
+        {
+            var result = employeeRepository.RequestDataPribadi(nip);
+            return Ok(result);
+        }
+
         [HttpGet("ActivityByOvertimeID/{overtimeId}")]
         public ActionResult ActivityList(int overtimeId)
         {

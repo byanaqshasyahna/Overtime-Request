@@ -20,6 +20,10 @@ namespace OvertimeRequest_API.VirtualModels
         public DateTime DateRequest { get; set; }
         public DateTime DateOvertime { get; set; }
         public int OvertimeId { get; set; }
+        
+        public int ManagerApprove { get; set; }
+        public int FinanceApprove { get; set; }
+
 
     }
 }
