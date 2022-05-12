@@ -6,6 +6,7 @@ using OvertimeRequest_API.Context;
 using OvertimeRequest_API.Models;
 using OvertimeRequest_API.Repository.Data;
 using OvertimeRequest_API.VirtualModels;
+using System.Collections.Generic;
 using System.Net;
 
 namespace OvertimeRequest_API.Controllers
@@ -25,10 +26,15 @@ namespace OvertimeRequest_API.Controllers
         }
 
         [HttpPost("OvertimeRequest")]
-        public ActionResult OvertimeRequest(OvertimeRequestVM overtimeReqeustVM)
+        public ActionResult OvertimeRequest(List<OvertimeRequestVM> overtimeReqeustVM)
         {
-            var result = employeeRepository.OvertimeRequest(overtimeReqeustVM);
-            if(result > 0)
+            var result = 0;
+            for(int i = 0; i< overtimeReqeustVM.Count; i++)
+            {
+                result = employeeRepository.OvertimeRequest(overtimeReqeustVM[i]);
+            }
+            
+            if(result > overtimeReqeustVM.Count)
             {
                 return StatusCode( 200, new {status = HttpStatusCode.OK, result, message = "sukses"} );
             }
