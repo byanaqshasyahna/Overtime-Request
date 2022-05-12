@@ -1,0 +1,41 @@
+﻿@model OvertimeRequest_API.VirtualModels.OvertimeRequestVM
+@{
+    Layout = null;
+}
+@using OvertimeRequest_Client;
+@{
+    //BeginCollectionItemCore already created in HtmlHelper.cs class
+}
+
+@using (Html.BeginCollectionItem("AddMoreList"))
+{
+    <!-------"AddMoreList"----- this is AddMoreViewModel List Object wich is define ViewModel file -->
+    <div id="removeAddMoreDiv" class="col-xs-12 col-sm-12 form-group">
+        <div class="row">
+            <input asp-for="NIP" placeholder="NIP" class="form-control" />
+            <input asp-for="DateRequest" type="date" placeholder="DateRequest" class="form-control" />
+
+            <div class="col-md-3">
+                <input asp-for="StartTime" type="time" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input asp-for="EndTime" type="time"  class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input asp-for="Description" placeholder="Description" class="form-control" />
+                
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-danger btn-sm removeDiv">
+                    Remove
+                </button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+}
+<script>
+    $(".removeDiv").click(function () {
+        $(this).parents("#removeAddMoreDiv").remove();
+    });
+</script>

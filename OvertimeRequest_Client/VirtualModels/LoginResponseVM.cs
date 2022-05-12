@@ -6,5 +6,6 @@
         public string TokenJWT { get; set; }
         public string Message { get; set; }
         public string Email { get; set; }
+        public string NIP { get; set; }
     }
 }

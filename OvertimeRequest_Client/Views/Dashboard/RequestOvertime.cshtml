@@ -9,7 +9,7 @@
 
     <div class="form-row">
 
-        @*Input Birthdate*@
+    
         <div class="form-group col-md-12">
             <label for="Birthdate">Overtime Date</label></br>
             <input type="date" id="RequestDate" />
@@ -19,42 +19,116 @@
         </div>
     </div>
 
-     <div class="form-row">
-        @*Input First Name*@
+    <div class="test">
+         <div id="aktivitas1" class="form-row aktivitas">
+
         <div class="form-group col-md-4">
             <label for="FirstName">Start Time</label>
-            <input type="time" class="form-control" id="StartTime" placeholder="First Name" required>
+            <input type="time" class="form-control" id="StartTime1" placeholder="First Name" required>
             <div class="invalid-feedback">
                 Insert Start Time
             </div>
         </div>
-        @*Input First Name*@
+
         <div class="form-group col-md-4">
             <label for="FirstName">Finish Time</label>
-            <input type="Time" class="form-control" id="FinishTime" placeholder="First Name" required>
+            <input type="Time" class="form-control" id="FinishTime1" placeholder="First Name" required>
             <div class="invalid-feedback">
                 Insert Start Time
             </div>
         </div>
-        @*Input First Name*@
+
         <div class="form-group col-md-4">
             <label for="FirstName"> Description</label>
-            <input type="text" class="form-control" id="Description" placeholder="First Name" required>
+            <input type="text" class="form-control" id="Description1" placeholder="First Name" required>
             <div class="invalid-feedback">
                 Insert Start Time
             </div>
         </div>
         </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+     </div>
+   
+    
 </form>
 
+ <button type="submit" form="Overtime" class="btn btn-primary">Submit</button>
+<button class="btn btn-primary float-right mt-2" onclick="addMoreRequest()" >Add More</button>
+<button class="btn btn-primary float-right mt-2 m-2" onclick="deleteMoreRequest()" >Delete More</button>
 
 
-<input type="hidden" id="nip" value="" />
 
-<input type="hidden" id="email" value="@Context.Session.GetString("Email")" />
 
 @*<script>
     const token = '@Context.Session.GetString("JWToken")';
    
 </script>*@
+
+@*
+<style>
+    .form-group-material {
+        position: relative;
+        margin-bottom: 0px !important;
+    }
+</style>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<form class="needs-validation" novalidate>
+    <section class="forms">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form asp-action="PostAddMore"  class="text-left form-validate">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="Overtime Date">Overtime Date</label></br>
+                                        <input type="date" id="RequestDate" />
+                                        <div class="invalid-feedback">
+                                            Insert Overtime Date
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="col-sm-12">
+                                    @Html.Partial("AddMorePartialView")
+                                </div>
+                                <div id="addAddMoreDiv"></div>
+                                <a id="add_rows" class="btn btn-primary float-right"> Add Row</a>
+                                <br />
+                                <br />
+                                <input type="submit" class="btn btn-primary float-left" value="Save" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+@section Scripts {
+<script>
+      $('#add_rows').on('click', function () {
+        $.ajax({
+            url: '@Url.Action("AddMorePartialView", "Dashboard")',
+            type: 'GET',
+            data: {
+            },
+            success: function (result) {
+                $('#addAddMoreDiv').append(result);
+            },
+            error: function () {
+                console.log("Error broo")
+            }
+        });
+    });
+</script>
+}
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+*@
+
+<input type="hidden" id="nip" value="@Context.Session.GetString("NIP")" />
+
+<input type="hidden" id="email" value="@Context.Session.GetString("Email")" />

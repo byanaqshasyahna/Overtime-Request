@@ -70,6 +70,7 @@ namespace OvertimeRequest_API.Controllers
 
                 var claims = new List<Claim>();
                 claims.Add(new Claim("Email", loginvm.Email));
+                claims.Add(new Claim("NIP", NIP));
 
                 foreach (var item in cekRole)
                 {
@@ -88,7 +89,7 @@ namespace OvertimeRequest_API.Controllers
                 var idToken = new JwtSecurityTokenHandler().WriteToken(token);
                 claims.Add(new Claim("TokenSecurity", idToken.ToString()));
 
-                return Ok(new { status = HttpStatusCode.OK, TokenJWT = idToken, message = "Login Success" , Email = loginvm.Email});
+                return Ok(new { status = HttpStatusCode.OK, TokenJWT = idToken, message = "Login Success" , Email = loginvm.Email, NIP = NIP});
 
             }
             else if (result == 0)
@@ -96,7 +97,7 @@ namespace OvertimeRequest_API.Controllers
                 return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Akun Tidak Ada", Email = loginvm.Email });
             }
             else
-                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Password Salah", Email = loginvm.Email });
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Password Salah", Email = loginvm.Email  });
 
         }
         public List<string> getRole(string NIP)
