@@ -1,10 +1,11 @@
-﻿$(document).ready(function () {
+﻿var nipPribadi = $('#nip').val();
+$(document).ready(function () {
     $("#OvertimeList").DataTable({
         "filter": true,
         "orderMulti": false,
         "processing": true,
         "ajax": {
-            "url": "https://localhost:44308/api/Employees/DataPribadi/2022003",
+            "url": "https://localhost:44308/api/Employees/DataPribadi/" + nipPribadi ,
             "datatype": "json",
             "dataSrc": "",
         },
