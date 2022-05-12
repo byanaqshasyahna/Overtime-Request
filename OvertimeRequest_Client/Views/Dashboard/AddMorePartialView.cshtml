@@ -1,4 +1,4 @@
-﻿@model OvertimeRequest_API.Models.Activity
+﻿@model OvertimeRequest_API.VirtualModels.OvertimeRequestVM
 @{
     Layout = null;
 }
@@ -7,7 +7,7 @@
     //BeginCollectionItemCore already created in HtmlHelper.cs class
 }
 
-@using (Html.BeginCollectionItem("AddMoreList"))
+@using (Html.BeginCollectionItem("Overtimes"))
 {
     <!-------"AddMoreList"----- this is AddMoreViewModel List Object wich is define ViewModel file -->
     <div id="removeAddMoreDiv" class="col-xs-12 col-sm-12 form-group">
@@ -16,7 +16,7 @@
                 <input asp-for="StartTime" type="time" class="form-control" />
             </div>
             <div class="col-md-3">
-                <input asp-for="FinishTime" type="time"  class="form-control" />
+                <input asp-for="EndTime" type="time"  class="form-control" />
             </div>
             <div class="col-md-3">
                 <input asp-for="Description" placeholder="Description" class="form-control" />

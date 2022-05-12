@@ -51,12 +51,12 @@ namespace OvertimeRequest_Client.Controllers
         {
             //this  action page is support cal the partial page.
             //We will call this action by view page.This Action is return partial page
-            OvertimeRequest_API.Models.Activity model = new OvertimeRequest_API.Models.Activity();
+            OvertimeRequest_API.VirtualModels.OvertimeRequestVM model = new OvertimeRequest_API.VirtualModels.OvertimeRequestVM();
             return PartialView("AddMorePartialView", model);
             //^this is actual partical page we have 
             //create on this page in Home Controller as given below image
         }
-        public ActionResult PostAddMore(OvertimeRequest_API.Models.Activity activity)
+        public ActionResult PostAdd(OvertimeRequest_API.VirtualModels.OvertimeRequestVM overtimeRequestVM)
         {
             //Here,Post addmore value from view page and get multiple values from view page
             return View();

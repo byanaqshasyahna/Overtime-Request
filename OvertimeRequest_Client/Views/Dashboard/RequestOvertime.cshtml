@@ -56,7 +56,6 @@
         margin-bottom: 0px !important;
     }
 </style>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <form class="needs-validation" novalidate>
     <section class="forms">
         <div class="container-fluid">
@@ -64,7 +63,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <form asp-action="PostAddMore" id="Overtime" onsubmit="RequestOvertime()" class="text-left form-validate">
+                            <form asp-action="PostAdd" class="text-left form-validate">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
