@@ -19,7 +19,7 @@ namespace OvertimeRequest_API.Models
         public string PhoneNumber { get; set; }
         public int Salary { get; set; }
         public DateTime BirthDate { get; set; }
-        public int PaidOvertime { get; set; }
+        
         public Gender Gender { get; set; }
 
         [JsonIgnore]
