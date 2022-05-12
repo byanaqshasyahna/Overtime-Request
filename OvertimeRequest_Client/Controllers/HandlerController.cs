@@ -19,22 +19,21 @@ namespace OvertimeRequest_Client.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Forbidden()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public new IActionResult Unauthorized()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Notfound()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
-        
+
     }
 }
 
