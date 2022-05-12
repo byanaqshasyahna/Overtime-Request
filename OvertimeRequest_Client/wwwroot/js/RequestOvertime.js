@@ -69,6 +69,7 @@ function RequestOvertime() {
 
         console.log("hitungan loop : " + i)
 
+
         var date = new Date($('#RequestDate').val());
         var timeStart = $('#RequestDate').val() + "T" + $('#StartTime' + (i) + '').val() + ":00";
         var timeEnd = $('#RequestDate').val() + "T" + $('#FinishTime' + (i) + '').val() + ":00";
@@ -81,6 +82,7 @@ function RequestOvertime() {
         obj.Description = $('#Description' + (i) + '').val();
         obj.NIP = NIP
         console.log(NIP)
+
 
         console.log(obj)
         daftar.push(obj)
@@ -127,5 +129,5 @@ function RequestOvertime() {
     console.log(daftar)
 
 
-    
+
 }
