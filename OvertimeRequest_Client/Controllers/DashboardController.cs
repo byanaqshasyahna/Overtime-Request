@@ -16,6 +16,7 @@ namespace OvertimeRequest_Client.Controllers
         [Authorize(Roles = "Admin, Employee, Manager, Finance")]
         public IActionResult Index()
         {
+
             return View();
         }
 

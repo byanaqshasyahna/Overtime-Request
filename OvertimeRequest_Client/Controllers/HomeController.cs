@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OvertimeRequest_API.VirtualModels;
 using OvertimeRequest_Client.Models;
@@ -21,6 +22,11 @@ namespace OvertimeRequest_Client.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("JWToken", "");
+            HttpContext.Session.SetString("Email", "");
+            HttpContext.Session.SetString("NIP", "");
+            HttpContext.Session.SetString("Salary", "");
+            HttpContext.Session.SetString("nickName", "");
             return View();
         }
 

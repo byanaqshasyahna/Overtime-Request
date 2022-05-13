@@ -170,7 +170,7 @@ function ApproveFinance(id, overtimeDate, createDate) {
                 console.log(result);
 
                 console.log("Sukses");
-                //setTimeout(location.reload(), 10000);
+                setTimeout(location.reload(), 10000);
             }).fail((error) => {
                 //alert pemberitahuan jika gagal
                 console.log("gabisa bro");
